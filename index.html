@@ -26,25 +26,18 @@
             color: var(--text-color);
             line-height: 1.5;
             padding: 0 40px;
-            position: relative;
             animation: fadeIn 1.0s ease-out forwards;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* 背景畫布設定 */
-        #bg-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1; /* 保持在文字內容背後 */
-            pointer-events: none; /* 確保滑鼠事件能穿透到底層內容 */
-            opacity: 0.5; /* 設置透明度，保持簡約 */
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* 導覽列 */
@@ -77,7 +70,7 @@
 
         /* 英雄區 (Hero Section) */
         .hero {
-            padding: 100px 0 80px 0;
+            padding: 60px 0 60px 0;
             max-width: 900px;
         }
 
@@ -93,6 +86,44 @@
             font-size: 18px;
             color: var(--sub-text);
             max-width: 650px;
+            margin-bottom: 32px;
+        }
+
+        /* 視頻封面區塊 */
+        .video-container {
+            width: 100%;
+            height: 450px;
+            position: relative;
+            margin-bottom: 60px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background-color: #f9f9f9;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 播放按鈕懸浮效果 */
+        .play-btn-box {
+            position: absolute;
+            bottom: 32px;
+            left: 32px;
+            background: white;
+            padding: 16px 32px;
+            border: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-btn-box:hover {
+            background: var(--accent-color);
+            color: white;
+            border-color: var(--accent-color);
         }
 
         /* 作品集區塊 */
@@ -107,9 +138,6 @@
         .portfolio-item {
             cursor: pointer;
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-            background-color: rgba(255, 255, 255, 0.8); /* 避免背景動畫干擾閱讀 */
-            padding: 16px;
-            border: 1px solid var(--border-color);
         }
 
         .portfolio-item:hover {
@@ -118,7 +146,7 @@
 
         .portfolio-img {
             width: 100%;
-            height: 350px;
+            height: 400px;
             background-color: #f4f4f4;
             display: flex;
             align-items: center;
@@ -127,19 +155,7 @@
             font-weight: 300;
             border: 1px solid var(--border-color);
             margin-bottom: 16px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .portfolio-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .portfolio-item:hover .portfolio-img img {
-            transform: scale(1.03);
+            overflow: relative;
         }
 
         .portfolio-title {
@@ -195,16 +211,23 @@
         }
 
         @media (max-width: 768px) {
-            body { padding: 0 20px; }
-            .portfolio-grid { grid-template-columns: 1fr; }
-            .contact { flex-direction: column; gap: 40px; }
-            .hero h1 { font-size: 36px; }
+            body {
+                padding: 0 20px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
         }
     </style>
 </head>
 <body>
-
-    <canvas id="bg-canvas"></canvas>
 
     <header>
         <div class="logo">WU ZONG.</div>
@@ -218,6 +241,17 @@
     <section class="hero">
         <h1>以視覺設計傳遞品牌價值，創造多元數位體驗。</h1>
         <p>4年視覺設計經驗的設計師，專注於品牌識別、線上營銷與 AIGC 輔助設計。擅長將專案需求轉化為有效的視覺解決方案。</p>
+        
+        <div class="video-container">
+            <video autoplay muted loop playsinline>
+                <source src="hero-video.mp4" type="video/mp4">
+                您的瀏覽器不支援 HTML5 視頻。
+            </video>
+            
+            <div class="play-btn-box" onclick="alert('專案展示影片加載中')">
+                Play Showreel
+            </div>
+        </div>
     </section>
 
     <section class="portfolio-grid" id="work">
@@ -246,82 +280,5 @@
         </div>
     </section>
 
-    <script>
-        const canvas = document.getElementById('bg-canvas');
-        const ctx = canvas.getContext('2d');
-
-        // 設定畫布大小
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-
-        // 粒子陣列
-        const particles = [];
-        const particleCount = Math.floor(window.innerWidth / 15); // 自動適應屏幕
-
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.vx = (Math.random() - 0.5) * 0.6;
-                this.vy = (Math.random() - 0.5) * 0.6;
-                this.radius = Math.random() * 1.5 + 0.5;
-            }
-
-            update() {
-                this.x += this.vx;
-                this.y += this.vy;
-
-                // 邊界反彈
-                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
-                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = '#000000'; // 黑色粒子
-                ctx.fill();
-            }
-        }
-
-        // 初始化粒子
-        for (let i = 0; i < particleCount; i++) {
-            particles.push(new Particle());
-        }
-
-        // 動畫循環
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            // 更新並繪製粒子
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-
-                // 繪製連線效果
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.strokeStyle = `rgba(0, 0, 0, ${0.15 - distance / 1000})`; // 隨距離漸變
-                        ctx.lineWidth = 1;
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animate);
-        }
-        
-        animate();
-    </script>
 </body>
 </html>
