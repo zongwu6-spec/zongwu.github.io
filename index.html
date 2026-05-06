@@ -26,21 +26,25 @@
             color: var(--text-color);
             line-height: 1.5;
             padding: 0 40px;
-            
-            /* 新增：載入淡入動畫 */
+            position: relative;
             animation: fadeIn 1.0s ease-out forwards;
         }
 
-        /* 新增：動畫關鍵影格 */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 背景畫布設定 */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* 保持在文字內容背後 */
+            pointer-events: none; /* 確保滑鼠事件能穿透到底層內容 */
+            opacity: 0.5; /* 設置透明度，保持簡約 */
         }
 
         /* 導覽列 */
@@ -102,17 +106,19 @@
 
         .portfolio-item {
             cursor: pointer;
-            /* 新增：懸停時的滑順過渡效果 */
             transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            background-color: rgba(255, 255, 255, 0.8); /* 避免背景動畫干擾閱讀 */
+            padding: 16px;
+            border: 1px solid var(--border-color);
         }
 
         .portfolio-item:hover {
-            transform: translateY(-8px); /* 向上浮動 */
+            transform: translateY(-8px);
         }
 
         .portfolio-img {
             width: 100%;
-            height: 400px;
+            height: 350px;
             background-color: #f4f4f4;
             display: flex;
             align-items: center;
@@ -121,7 +127,7 @@
             font-weight: 300;
             border: 1px solid var(--border-color);
             margin-bottom: 16px;
-            overflow: hidden; /* 確保圖片放大時不超出框外 */
+            overflow: hidden;
             position: relative;
         }
 
@@ -132,7 +138,6 @@
             transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        /* 新增：滑鼠移上圖片時微微放大 */
         .portfolio-item:hover .portfolio-img img {
             transform: scale(1.03);
         }
@@ -190,23 +195,16 @@
         }
 
         @media (max-width: 768px) {
-            body {
-                padding: 0 20px;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
+            body { padding: 0 20px; }
+            .portfolio-grid { grid-template-columns: 1fr; }
+            .contact { flex-direction: column; gap: 40px; }
+            .hero h1 { font-size: 36px; }
         }
     </style>
 </head>
 <body>
+
+    <canvas id="bg-canvas"></canvas>
 
     <header>
         <div class="logo">WU ZONG.</div>
@@ -234,12 +232,6 @@
             <div class="portfolio-title">Foodaily 每日食品品牌識別</div>
             <div class="portfolio-category">線下展會視覺 / UI與小程序設計</div>
         </div>
-
-        <div class="portfolio-item">
-            <div class="portfolio-img">項目三 圖片</div>
-            <div class="portfolio-title">酷萌體育 IP 衍生設計</div>
-            <div class="portfolio-category">IP 視覺展延 / 零售商務與審核設計</div>
-        </div>
     </section>
 
     <section class="contact" id="contact">
@@ -254,5 +246,82 @@
         </div>
     </section>
 
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        // 設定畫布大小
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // 粒子陣列
+        const particles = [];
+        const particleCount = Math.floor(window.innerWidth / 15); // 自動適應屏幕
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.vx = (Math.random() - 0.5) * 0.6;
+                this.vy = (Math.random() - 0.5) * 0.6;
+                this.radius = Math.random() * 1.5 + 0.5;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // 邊界反彈
+                if (this.x < 0 || this.x > canvas.width) this.vx = -this.vx;
+                if (this.y < 0 || this.y > canvas.height) this.vy = -this.vy;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = '#000000'; // 黑色粒子
+                ctx.fill();
+            }
+        }
+
+        // 初始化粒子
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+
+        // 動畫循環
+        function animate() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // 更新並繪製粒子
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
+
+                // 繪製連線效果
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 0, 0, ${0.15 - distance / 1000})`; // 隨距離漸變
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+    </script>
 </body>
 </html>
