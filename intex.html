@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>個人作品集 | 設計師</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #ffffff;
+            --text-color: #111111;
+            --sub-text: #666666;
+            --accent-color: #000000;
+            --border-color: #e5e5e5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5;
+            padding: 0 40px;
+        }
+
+        /* 導覽列 */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            margin-left: 32px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: var(--sub-text);
+        }
+
+        /* 英雄區 (Hero Section) */
+        .hero {
+            padding: 100px 0 80px 0;
+            max-width: 900px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 24px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: var(--sub-text);
+            max-width: 650px;
+        }
+
+        /* 作品集區塊 */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            padding-bottom: 100px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .portfolio-item {
+            cursor: pointer;
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 400px;
+            background-color: #f4f4f4;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--sub-text);
+            font-weight: 300;
+            border: 1px solid var(--border-color);
+            margin-bottom: 16px;
+        }
+
+        .portfolio-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .portfolio-category {
+            font-size: 14px;
+            color: var(--sub-text);
+        }
+
+        /* 聯絡區塊 */
+        .contact {
+            padding: 80px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-left {
+            max-width: 500px;
+        }
+
+        .contact-left h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-left p {
+            color: var(--sub-text);
+            margin-bottom: 24px;
+        }
+
+        .contact-link {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 16px;
+        }
+
+        .social-links a {
+            color: var(--sub-text);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 0 20px;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact {
+                flex-direction: column;
+                gap: 40px;
+            }
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">DESIGNER.</div>
+        <nav>
+            <a href="#work">作品集</a>
+            <a href="#about">關於</a>
+            <a href="#contact">聯絡</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>創造價值、傳遞情感的視覺體驗。</h1>
+        <p>我們擅長從使用者體驗出發，運用精準的視覺語彙為品牌說故事。透過策略建構與設計，深化品牌核心價值。</p>
+    </section>
+
+    <section class="portfolio-grid" id="work">
+        <div class="portfolio-item">
+            <div class="portfolio-img">圖片預留區 1</div>
+            <div class="portfolio-title">The Reporter Branding</div>
+            <div class="portfolio-category">品牌識別系統 / 開源協作系統</div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-img">圖片預留區 2</div>
+            <div class="portfolio-title">金點新秀設計展</div>
+            <div class="portfolio-category">主視覺與活動識別設計</div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-img">圖片預留區 3</div>
+            <div class="portfolio-title">TCCF 未來視野識別</div>
+            <div class="portfolio-category">品牌視覺設計 / 跨領域整合</div>
+        </div>
+
+        <div class="portfolio-item">
+            <div class="portfolio-img">圖片預留區 4</div>
+            <div class="portfolio-title">創新產品包裝設計</div>
+            <div class="portfolio-category">包裝設計與視覺語彙</div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="contact-left">
+            <h2>讓我們一起創造<br>下一個出色的品牌</h2>
+            <p>如果您有任何品牌設計、UI/UX 或是視覺傳達的合作需求，歡迎隨時與我聯繫，期待與您碰撞出更多靈感。</p>
+            <a class="contact-link" href="mailto:hello@example.com">hello@example.com</a>
+        </div>
+        <div class="social-links">
+            <a href="#">Medium</a>
+            <a href="#">Instagram</a>
+            <a href="#">LinkedIn</a>
+        </div>
+    </section>
+
+</body>
+</html>
