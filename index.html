@@ -3,117 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>项目详情 | 橙天嘉禾剧场视觉全案</title>
+    <title>Case Study | 橙天嘉禾剧场</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: #e5e5e5; font-family: 'Inter', sans-serif; }
-        .hero-gradient { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(10,10,10,1) 100%); }
-        /* 简单的滑动对比组件样式 */
-        .comparison-container { position: relative; overflow: hidden; border-radius: 8px; }
-        .before-image { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 2px solid #fbbf24; z-index: 10; }
-        .before-image img { width: 100vw; max-width: none; height: 100%; object-fit: cover; }
+        body { background-color: #000; color: #fff; font-family: 'Inter', sans-serif; animation: fadeIn 1s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .comparison-slider { position: relative; width: 100%; height: 60vh; overflow: hidden; border-radius: 1rem; }
+        .after-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+        .before-img { position: absolute; top: 0; left: 0; width: 50%; height: 100%; border-right: 3px solid #fff; z-index: 10; overflow: hidden; }
+        .before-img img { width: 100vw; height: 60vh; object-fit: cover; filter: grayscale(100%) brightness(0.6); }
     </style>
 </head>
 <body class="antialiased">
 
-    <section class="relative h-screen w-full overflow-hidden">
-        <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=2000" alt="Theatre Hero" class="absolute inset-0 w-full h-full object-cover opacity-60">
-        <div class="absolute inset-0 hero-gradient"></div>
-        
-        <div class="relative z-10 flex flex-col justify-end h-full px-8 pb-20 max-w-6xl mx-auto">
-            <span class="text-yellow-500 font-bold tracking-widest mb-4 uppercase">Orange Sky Golden Harvest</span>
-            <h1 class="text-5xl md:text-7xl font-extrabold mb-6">橙天嘉禾剧场：<br>光影叙事下的品牌视觉重塑</h1>
-            <div class="flex flex-wrap gap-4 text-sm text-gray-400">
-                <span class="px-3 py-1 border border-gray-700 rounded-full">3D空间建模</span>
-                <span class="px-3 py-1 border border-gray-700 rounded-full">品牌视觉全案</span>
-                <span class="px-3 py-1 border border-gray-700 rounded-full">线下物料监制</span>
-            </div>
-        </div>
-    </section>
+    <nav class="fixed top-0 w-full z-50 flex justify-between items-center px-8 py-6">
+        <a href="index.html" class="text-sm font-bold tracking-widest hover:opacity-50 transition uppercase">← Back</a>
+        <div class="text-xs font-mono uppercase text-zinc-500">Case Study 01</div>
+    </nav>
 
-    <section class="py-24 px-8 max-w-4xl mx-auto">
-        <h2 class="text-3xl font-bold mb-12 border-l-4 border-yellow-500 pl-6">项目策略 / Strategy</h2>
-        <p class="text-xl leading-relaxed text-gray-300 mb-8">
-            作为设计师，我不仅关注平面维度的美感，更核心的任务是构建从线上宣发到线下剧场空间的“无缝视觉旅程”。通过对剧场物理环境的分析，我将品牌基因注入每一个观众触点。
-        </p>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-center">
+    <header class="pt-40 pb-20 px-8 max-w-6xl mx-auto">
+        <h1 class="text-6xl md:text-8xl font-black uppercase tracking-tighter mb-8 italic">Orange Sky<br>Golden Harvest</h1>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-20 border-t border-zinc-800 pt-10">
             <div>
-                <div class="text-yellow-500 text-3xl mb-4 font-bold">01.</div>
-                <h3 class="font-bold mb-2">数字化感知</h3>
-                <p class="text-sm text-gray-500">社交媒体与直播视觉预热，建立第一品牌印象。</p>
+                <p class="text-zinc-500 text-xs uppercase mb-2 font-bold tracking-widest">Role</p>
+                <p class="text-lg">视觉设计师 / 空间监制</p>
             </div>
             <div>
-                <div class="text-yellow-500 text-3xl mb-4 font-bold">02.</div>
-                <h3 class="font-bold mb-2">沉浸式引导</h3>
-                <p class="text-sm text-gray-500">基于Rhino建模的导视与美陈装置，优化入场动线。</p>
+                <p class="text-zinc-500 text-xs uppercase mb-2 font-bold tracking-widest">Services</p>
+                <p class="text-lg">品牌全案 / Rhino建模 / 动态视觉</p>
             </div>
             <div>
-                <div class="text-yellow-500 text-3xl mb-4 font-bold">03.</div>
-                <h3 class="font-bold mb-2">商业价值转化</h3>
-                <p class="text-sm text-gray-500">文创周边与限量画册设计，延续演出艺术生命力。</p>
+                <p class="text-zinc-500 text-xs uppercase mb-2 font-bold tracking-widest">Date</p>
+                <p class="text-lg">2024.03 - 2025.01</p>
+            </div>
+        </div>
+    </header>
+
+    <section class="px-8 py-20 max-w-6xl mx-auto">
+        <p class="mb-6 text-zinc-400 font-medium">设计推演：从 Rhino 模型到现场落地 (拖动滑块查看对比)</p>
+        <div class="comparison-slider" id="slider">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2000" class="after-img">
+            <div class="before-img" id="before-box">
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000">
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-zinc-900 px-8">
-        <div class="max-w-6xl mx-auto">
-            <h2 class="text-3xl font-bold mb-8 italic">Model vs. Reality</h2>
-            <p class="mb-10 text-gray-400">利用 3D 模拟技术精准预判物料与环境的尺度关系。 (左: Rhino模型 / 右: 现场实景)</p>
-            
-            <div class="comparison-container aspect-video w-full group">
-                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover">
-                <div class="before-image">
-                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="filter grayscale contrast-125 opacity-80">
-                </div>
-                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-yellow-500 text-black px-4 py-2 text-xs font-bold rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity">
-                    拖动滑块查看对比
-                </div>
-            </div>
-        </div>
+    <section class="py-20 px-8 grid grid-cols-2 md:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <img src="https://images.unsplash.com/photo-1550684848-fac1c5b4e853?auto=format&fit=crop&q=80&w=800" class="rounded-lg">
+        <img src="https://images.unsplash.com/photo-1550684847-75bdda21cc95?auto=format&fit=crop&q=80&w=800" class="rounded-lg mt-10">
+        <img src="https://images.unsplash.com/photo-1550684848-86a5d8727436?auto=format&fit=crop&q=80&w=800" class="rounded-lg">
+        <img src="https://images.unsplash.com/photo-1550684847-15273574944d?auto=format&fit=crop&q=80&w=800" class="rounded-lg mt-10">
     </section>
 
-    <section class="py-24 px-8 max-w-6xl mx-auto">
-        <h2 class="text-3xl font-bold mb-16 uppercase tracking-tighter">Production Details / 工艺档案</h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div class="space-y-4">
-                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                </div>
-                <p class="text-xs text-gray-500 font-mono">MATTE VINYL / 哑面背胶</p>
-            </div>
-            <div class="space-y-4 pt-8">
-                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                </div>
-                <p class="text-xs text-gray-500 font-mono">ACRYLIC NEON / 亚克力发光</p>
-            </div>
-            <div class="space-y-4">
-                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                </div>
-                <p class="text-xs text-gray-500 font-mono">FOIL STAMPING / 烫金工艺</p>
-            </div>
-            <div class="space-y-4 pt-8">
-                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
-                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
-                </div>
-                <p class="text-xs text-gray-500 font-mono">BACKLIT FILM / 室内灯片</p>
-            </div>
-        </div>
-    </section>
-
-    <footer class="py-20 border-t border-zinc-800 text-center">
-        <p class="text-gray-600 text-sm mb-4 italic">“视觉不仅是观看，更是进入一段旅程的邀请。”</p>
-        <a href="#" class="text-yellow-500 font-bold hover:underline">返回作品集首页</a>
+    <footer class="py-40 text-center">
+        <p class="text-zinc-600 mb-6">NEXT PROJECT</p>
+        <a href="index.html" class="text-5xl font-black uppercase hover:italic transition-all">Minions IP Campaign →</a>
     </footer>
 
     <script>
-        const container = document.querySelector('.comparison-container');
-        const before = document.querySelector('.before-image');
-        container.addEventListener('mousemove', (e) => {
-            let rect = container.getBoundingClientRect();
-            let x = e.clientX - rect.left;
-            before.style.width = `${(x / rect.width) * 100}%`;
+        const slider = document.getElementById('slider');
+        const beforeBox = document.getElementById('before-box');
+        slider.addEventListener('mousemove', (e) => {
+            let x = e.pageX - slider.offsetLeft;
+            beforeBox.style.width = (x / slider.offsetWidth) * 100 + "%";
+        });
+        // 移动端支持
+        slider.addEventListener('touchmove', (e) => {
+            let x = e.touches[0].pageX - slider.offsetLeft;
+            beforeBox.style.width = (x / slider.offsetWidth) * 100 + "%";
         });
     </script>
 </body>
