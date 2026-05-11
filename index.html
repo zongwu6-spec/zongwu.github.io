@@ -1,284 +1,120 @@
 <!DOCTYPE html>
-<html lang="zh-TW">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>吳縱 | 視覺設計師作品集</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>项目详情 | 橙天嘉禾剧场视觉全案</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root {
-            --bg-color: #ffffff;
-            --text-color: #111111;
-            --sub-text: #666666;
-            --accent-color: #000000;
-            --border-color: #e5e5e5;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.5;
-            padding: 0 40px;
-            animation: fadeIn 1.0s ease-out forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* 導覽列 */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 0;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .logo {
-            font-weight: 700;
-            font-size: 20px;
-            letter-spacing: -0.5px;
-        }
-
-        nav a {
-            color: var(--text-color);
-            text-decoration: none;
-            margin-left: 32px;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-
-        nav a:hover {
-            color: var(--sub-text);
-        }
-
-        /* 英雄區 (Hero Section) */
-        .hero {
-            padding: 60px 0 60px 0;
-            max-width: 900px;
-        }
-
-        .hero h1 {
-            font-size: 48px;
-            font-weight: 600;
-            line-height: 1.2;
-            letter-spacing: -1px;
-            margin-bottom: 24px;
-        }
-
-        .hero p {
-            font-size: 18px;
-            color: var(--sub-text);
-            max-width: 650px;
-            margin-bottom: 32px;
-        }
-
-        /* 視頻封面區塊 */
-        .video-container {
-            width: 100%;
-            height: 450px;
-            position: relative;
-            margin-bottom: 60px;
-            border: 1px solid var(--border-color);
-            overflow: hidden;
-            background-color: #f9f9f9;
-        }
-
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* 播放按鈕懸浮效果 */
-        .play-btn-box {
-            position: absolute;
-            bottom: 32px;
-            left: 32px;
-            background: white;
-            padding: 16px 32px;
-            border: 1px solid var(--border-color);
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .play-btn-box:hover {
-            background: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-        }
-
-        /* 作品集區塊 */
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 40px;
-            padding-bottom: 100px;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .portfolio-item {
-            cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-
-        .portfolio-item:hover {
-            transform: translateY(-8px);
-        }
-
-        .portfolio-img {
-            width: 100%;
-            height: 400px;
-            background-color: #f4f4f4;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--sub-text);
-            font-weight: 300;
-            border: 1px solid var(--border-color);
-            margin-bottom: 16px;
-            overflow: relative;
-        }
-
-        .portfolio-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
-
-        .portfolio-category {
-            font-size: 14px;
-            color: var(--sub-text);
-        }
-
-        /* 聯絡區塊 */
-        .contact {
-            padding: 80px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-        }
-
-        .contact-left {
-            max-width: 500px;
-        }
-
-        .contact-left h2 {
-            font-size: 32px;
-            font-weight: 600;
-            margin-bottom: 16px;
-            letter-spacing: -0.5px;
-        }
-
-        .contact-left p {
-            color: var(--sub-text);
-            margin-bottom: 24px;
-        }
-
-        .contact-link {
-            font-size: 16px;
-            font-weight: 600;
-            color: var(--accent-color);
-            text-decoration: underline;
-        }
-
-        .social-links {
-            display: flex;
-            gap: 16px;
-        }
-
-        .social-links a {
-            color: var(--sub-text);
-            text-decoration: none;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 0 20px;
-            }
-            .portfolio-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact {
-                flex-direction: column;
-                gap: 40px;
-            }
-            .hero h1 {
-                font-size: 36px;
-            }
-        }
+        body { background-color: #0a0a0a; color: #e5e5e5; font-family: 'Inter', sans-serif; }
+        .hero-gradient { background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(10,10,10,1) 100%); }
+        /* 简单的滑动对比组件样式 */
+        .comparison-container { position: relative; overflow: hidden; border-radius: 8px; }
+        .before-image { position: absolute; top: 0; left: 0; width: 50%; height: 100%; overflow: hidden; border-right: 2px solid #fbbf24; z-index: 10; }
+        .before-image img { width: 100vw; max-width: none; height: 100%; object-fit: cover; }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header>
-        <div class="logo">WU ZONG.</div>
-        <nav>
-            <a href="#work">作品集</a>
-            <a href="#about">關於我</a>
-            <a href="#contact">聯絡</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <h1>以視覺設計傳遞品牌價值，創造多元數位體驗。</h1>
-        <p>4年視覺設計經驗的設計師，專注於品牌識別、線上營銷與 AIGC 輔助設計。擅長將專案需求轉化為有效的視覺解決方案。</p>
+    <section class="relative h-screen w-full overflow-hidden">
+        <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?auto=format&fit=crop&q=80&w=2000" alt="Theatre Hero" class="absolute inset-0 w-full h-full object-cover opacity-60">
+        <div class="absolute inset-0 hero-gradient"></div>
         
-        <div class="video-container">
-            <video autoplay muted loop playsinline>
-                <source src="hero-video.mp4" type="video/mp4">
-                您的瀏覽器不支援 HTML5 視頻。
-            </video>
-            
-            <div class="play-btn-box" onclick="alert('專案展示影片加載中')">
-                Play Showreel
+        <div class="relative z-10 flex flex-col justify-end h-full px-8 pb-20 max-w-6xl mx-auto">
+            <span class="text-yellow-500 font-bold tracking-widest mb-4 uppercase">Orange Sky Golden Harvest</span>
+            <h1 class="text-5xl md:text-7xl font-extrabold mb-6">橙天嘉禾剧场：<br>光影叙事下的品牌视觉重塑</h1>
+            <div class="flex flex-wrap gap-4 text-sm text-gray-400">
+                <span class="px-3 py-1 border border-gray-700 rounded-full">3D空间建模</span>
+                <span class="px-3 py-1 border border-gray-700 rounded-full">品牌视觉全案</span>
+                <span class="px-3 py-1 border border-gray-700 rounded-full">线下物料监制</span>
             </div>
         </div>
     </section>
 
-    <section class="portfolio-grid" id="work">
-        <div class="portfolio-item">
-            <div class="portfolio-img">項目一 圖片</div>
-            <div class="portfolio-title">橙天嘉禾劇場視覺設計</div>
-            <div class="portfolio-category">活動識別 / 劇場展覽與文創設計</div>
-        </div>
-
-        <div class="portfolio-item">
-            <div class="portfolio-img">項目二 圖片</div>
-            <div class="portfolio-title">Foodaily 每日食品品牌識別</div>
-            <div class="portfolio-category">線下展會視覺 / UI與小程序設計</div>
-        </div>
-    </section>
-
-    <section class="contact" id="contact">
-        <div class="contact-left">
-            <h2>讓我們一起創造<br>下一個出色的設計</h2>
-            <p>如果您有任何品牌設計、營銷宣傳或是 IP 衍生設計的合作需求，歡迎隨時與我聯繫。</p>
-            <a class="contact-link" href="mailto:2601886747@qq.com">2601886747@qq.com</a>
-        </div>
-        <div class="social-links">
-            <a href="tel:15052891579">致電</a>
-            <span>150-5289-1579</span>
+    <section class="py-24 px-8 max-w-4xl mx-auto">
+        <h2 class="text-3xl font-bold mb-12 border-l-4 border-yellow-500 pl-6">项目策略 / Strategy</h2>
+        <p class="text-xl leading-relaxed text-gray-300 mb-8">
+            作为设计师，我不仅关注平面维度的美感，更核心的任务是构建从线上宣发到线下剧场空间的“无缝视觉旅程”。通过对剧场物理环境的分析，我将品牌基因注入每一个观众触点。
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16 text-center">
+            <div>
+                <div class="text-yellow-500 text-3xl mb-4 font-bold">01.</div>
+                <h3 class="font-bold mb-2">数字化感知</h3>
+                <p class="text-sm text-gray-500">社交媒体与直播视觉预热，建立第一品牌印象。</p>
+            </div>
+            <div>
+                <div class="text-yellow-500 text-3xl mb-4 font-bold">02.</div>
+                <h3 class="font-bold mb-2">沉浸式引导</h3>
+                <p class="text-sm text-gray-500">基于Rhino建模的导视与美陈装置，优化入场动线。</p>
+            </div>
+            <div>
+                <div class="text-yellow-500 text-3xl mb-4 font-bold">03.</div>
+                <h3 class="font-bold mb-2">商业价值转化</h3>
+                <p class="text-sm text-gray-500">文创周边与限量画册设计，延续演出艺术生命力。</p>
+            </div>
         </div>
     </section>
 
+    <section class="py-20 bg-zinc-900 px-8">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold mb-8 italic">Model vs. Reality</h2>
+            <p class="mb-10 text-gray-400">利用 3D 模拟技术精准预判物料与环境的尺度关系。 (左: Rhino模型 / 右: 现场实景)</p>
+            
+            <div class="comparison-container aspect-video w-full group">
+                <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover">
+                <div class="before-image">
+                    <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=2000" class="filter grayscale contrast-125 opacity-80">
+                </div>
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-20 bg-yellow-500 text-black px-4 py-2 text-xs font-bold rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity">
+                    拖动滑块查看对比
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold mb-16 uppercase tracking-tighter">Production Details / 工艺档案</h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <div class="space-y-4">
+                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-xs text-gray-500 font-mono">MATTE VINYL / 哑面背胶</p>
+            </div>
+            <div class="space-y-4 pt-8">
+                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-xs text-gray-500 font-mono">ACRYLIC NEON / 亚克力发光</p>
+            </div>
+            <div class="space-y-4">
+                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-xs text-gray-500 font-mono">FOIL STAMPING / 烫金工艺</p>
+            </div>
+            <div class="space-y-4 pt-8">
+                <div class="h-48 bg-zinc-800 rounded-lg overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?auto=format&fit=crop&q=80&w=500" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500">
+                </div>
+                <p class="text-xs text-gray-500 font-mono">BACKLIT FILM / 室内灯片</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-20 border-t border-zinc-800 text-center">
+        <p class="text-gray-600 text-sm mb-4 italic">“视觉不仅是观看，更是进入一段旅程的邀请。”</p>
+        <a href="#" class="text-yellow-500 font-bold hover:underline">返回作品集首页</a>
+    </footer>
+
+    <script>
+        const container = document.querySelector('.comparison-container');
+        const before = document.querySelector('.before-image');
+        container.addEventListener('mousemove', (e) => {
+            let rect = container.getBoundingClientRect();
+            let x = e.clientX - rect.left;
+            before.style.width = `${(x / rect.width) * 100}%`;
+        });
+    </script>
 </body>
 </html>
